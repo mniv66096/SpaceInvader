@@ -11,6 +11,7 @@ I roughly spent 5 hours creating this mini-game. Below is an approximate breakdo
 
 
 ## How to Play
+Before playing the game, please add all 3 scenes ("StartScene", "MainGame-Traditional", "MainGame-FPS") in the build settings in Unity, and start from the "StartScene" 
 
 There are two modes: the traditional space invader style and FPS style. 
 
