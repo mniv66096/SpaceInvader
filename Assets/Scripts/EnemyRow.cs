@@ -16,7 +16,6 @@ public class EnemyRow : MonoBehaviour {
 
 	private void Start()
 	{
-        print(GameController.Instance.GameBoundaries.Up);
         transform.position = new Vector3(0.0f, 0.0f, GameController.Instance.GameBoundaries.Up);
         _horizontalLength = GameController.Instance.GameBoundaries.Right - GameController.Instance.GameBoundaries.Left;
         // Add two more empty columns so the enemies could move around in the row

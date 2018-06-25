@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class PlayerSpaceShip : MonoBehaviour {
+public class PlayerSpaceShip : MonoBehaviour
+{
     public static PlayerSpaceShip Instance;
 
     [HideInInspector]
@@ -12,6 +13,9 @@ public class PlayerSpaceShip : MonoBehaviour {
     public float TiltingMultiplier = 0.5f;
     [HideInInspector]
     public float FireCoolDownTime = 0.5f;
+
+    public delegate void PlayerKilledHandler();
+    public event PlayerKilledHandler OnPlayerKilled;
 
     private Rigidbody _rb;
     //The spaceship is enable to fire a bullet if timer is less than zero;
@@ -67,7 +71,9 @@ public class PlayerSpaceShip : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("EnemyBullet") || other.CompareTag("Enemy")) {
-            print("Lose!");
+            if (OnPlayerKilled != null) {
+                OnPlayerKilled.Invoke();
+            }
         }
 	}
 }

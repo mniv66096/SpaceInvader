@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [System.Serializable]
 public struct Boundaries {
@@ -36,8 +37,23 @@ public class GameController : MonoBehaviour {
     public float EnemyForwardSpeed;
 
 
+    [Header("UI")]
+    public Text ScoreBoard;
 
+    [HideInInspector]
+    public int GameScore = 0;
 
+    public void OnEnemyKilledAction (Enemy enemy) {
+        GameScore += enemy.KillingPoint;
+        ScoreBoard.text = GameScore.ToString();
+    }
+
+    public void OnPlayerKilledAction () {
+        if (GameScore > PlayerPrefs.GetInt("HighestScore")) {
+            PlayerPrefs.SetInt("HighestScore", GameScore);
+        }
+        UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("StartScene", UnityEngine.SceneManagement.LoadSceneMode.Single);
+    }
 
     private void Awake()
     {
@@ -54,6 +70,7 @@ public class GameController : MonoBehaviour {
 
 	private void Start()
 	{
-        DontDestroyOnLoad(gameObject);
+        PlayerPrefs.SetInt("PlayTimes", PlayerPrefs.GetInt("PlayTimes") + 1);
+        PlayerSpaceShip.Instance.OnPlayerKilled += OnPlayerKilledAction;
 	}
 }

@@ -9,10 +9,12 @@ public class SpaceShipWeapon : MonoBehaviour {
 
     private float _recoilingTimer;
     private Vector3 _defaultLocalPosition;
+    private AudioSource _audioSource;
 
 	private void Start()
 	{
         _defaultLocalPosition = transform.localPosition;
+        _audioSource = GetComponent<AudioSource>();
 	}
 
 	public void Fire() {
@@ -21,6 +23,11 @@ public class SpaceShipWeapon : MonoBehaviour {
     }
 
     private IEnumerator FireBullet() {
+        //Play Audio
+        if (_audioSource != null) {
+            _audioSource.Play();
+        }
+
         //InitRecoilingAnimation
         _recoilingTimer = 0.0f;
         transform.localPosition = _defaultLocalPosition - Vector3.forward * RecoilDistance;

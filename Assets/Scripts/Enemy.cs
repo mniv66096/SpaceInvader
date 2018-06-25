@@ -32,6 +32,7 @@ public class Enemy : MonoBehaviour {
 	private void OnTriggerEnter(Collider other)
 	{
         if (other.CompareTag("PlayerBullet")) {
+            GameController.Instance.OnEnemyKilledAction(this);
             Instantiate(DeadExplosionPrefab, transform.position, Quaternion.identity);
             Destroy(other.gameObject);
             EnemyController.Instance.RemoveEnemy(this);

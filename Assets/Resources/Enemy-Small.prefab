@@ -1555,7 +1555,7 @@ MonoBehaviour:
     type: 2}
   EnemyBulletPrefab: {fileID: 1052238675403000, guid: d01af82447a3940088617893b7f4a43e,
     type: 2}
-  KillingPoint: 0
+  KillingPoint: 100
   BulletSpeed: 0.1
   Column: 0
 --- !u!137 &137298392456043630
