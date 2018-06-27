@@ -13,6 +13,8 @@ I roughly spent 5 hours creating this mini-game. Below is an approximate breakdo
 ## How to Play
 Before playing the game, please add all 3 scenes ("StartScene", "MainGame-Traditional", "MainGame-FPS") in the build settings in Unity, and start from the "StartScene" 
 
+You can change all the important game variables (e.g., speed, enemy spawn rate) in the GameController object in two MainGame scene. The two different modes may have different difficulties, so you could change each of them separately.
+
 There are two modes: the traditional space invader style and FPS style. 
 
 Use arrow keys to control the space movement and use "space" key to shoot the enemies.
